@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Courses | Corporate Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #00cec9;
+            --dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: #94a3b8;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .course-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            /* Hidden initially for GSAP */
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .course-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.2);
+            color: #a29bfe;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* Subtle background glow */
+        .glow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            filter: blur(80px);
+            z-index: -1;
+            top: 20%;
+            left: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow"></div>
+
+    <h1>Master Your Tech Stack</h1>
+    <p class="subtitle">5+ Years of Corporate Excellence in Modern Engineering</p>
+
+    <div class="course-grid">
+        <div class="course-card">
+            <span class="tag">Backend</span>
+            <h3>Python Mastery</h3>
+            <p>From core syntax to advanced automation and data processing.</p>
+        </div>
+
+        <div class="course-card">
+            <span class="tag">Database</span>
+            <h3>MySQL Architecture</h3>
+            <p>Relational database design, complex queries, and optimization.</p>
+        </div>
+
+        <div class="course-card">
+            <span class="tag">Frontend</span>
+            <h3>HTML5 & CSS3</h3>
+            <p>Responsive design, modern layouts, and beautiful UI/UX principles.</p>
+        </div>
+
+        <div class="course-card">
+            <span class="tag">Data</span>
+            <h3>Advanced Excel</h3>
+            <p>Complex formulas, pivot tables, and data visualization for business.</p>
+        </div>
+
+        <div class="course-card">
+            <span class="tag">Artificial Intelligence</span>
+            <h3>AI Prompting</h3>
+            <p>Strategic engineering to get the most out of LLMs and Generative AI.</p>
+        </div>
+
+        <div class="course-card">
+            <span class="tag">Future Tech</span>
+            <h3>Agentic AI</h3>
+            <p>Building autonomous AI agents that think, plan, and execute tasks.</p>
+        </div>
+    </div>
+
+    <script>
+        // GSAP Animation Script
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.to(".course-card", {
+                duration: 0.8,
+                opacity: 1,
+                y: 0,
+                stagger: 0.2, // This creates the "one after another" effect
+                ease: "power4.out",
+                startAt: { y: 50 }
+            });
+
+            // Hover animation enhancement
+            const cards = document.querySelectorAll('.course-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, { scale: 1.02, duration: 0.3 });
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, { scale: 1, duration: 0.3 });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+:root {
+    --bg: #0a0a0a;
+    --text: #ffffff;
+    --accent: #ff3e00;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin: 0;
+    line-height: 1;
+    overflow: hidden;
+    /* For the reveal effect */
+}
+
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    mix-blend-mode: difference;
+}
+
+.contact-section {
+    padding: 100px 10%;
+    background: #0a0a0a;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+/* Base Input Styles */
+input,
+textarea {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.4s ease;
+}
+
+/* Floating Label Logic */
+label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* When input is focused or has content, move label */
+input:focus~label,
+input:not(:placeholder-shown)~label,
+textarea:focus~label,
+textarea:not(:placeholder-shown)~label {
+    top: -15px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    /* #ff3e00 */
+}
+
+input:focus,
+textarea:focus {
+    border-bottom: 1px solid var(--accent);
+}
+
+/* Stylish Button */
+#submit-btn {
+    position: relative;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 15px 40px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease;
+    font-weight: 600;
+}
+
+#submit-btn:hover {
+    color: black;
+}
+
+#submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: white;
+    z-index: -1;
+    transition: width 0.4s ease;
+}
+
+#submit-btn:hover::before {
+    width: 100%;
+}
